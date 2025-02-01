@@ -6,7 +6,19 @@ const app = express();
 import todoRoutes from "./routes/todoRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 
+//parser
 app.use(express.json());
+
+//logger
+const requestLogger = (req, res, next) => {
+  console.log("Method:", req.method);
+  console.log("Path:", req.path);
+  console.log("Body:", req.body);
+  console.log("---");
+  next();
+};
+
+app.use(requestLogger);
 
 //routes
 app.use("/api/todo", todoRoutes);
