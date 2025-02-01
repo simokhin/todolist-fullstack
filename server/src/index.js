@@ -20,6 +20,12 @@ const requestLogger = (req, res, next) => {
 
 app.use(requestLogger);
 
+const unknownEndpoint = (req, res) => {
+  res.status(404).send({ error: "Unknown endpoint" });
+};
+
+app.use(unknownEndpoint);
+
 //routes
 app.use("/api/todo", todoRoutes);
 app.use("/auth", authRoutes);
