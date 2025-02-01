@@ -1,6 +1,6 @@
 import "dotenv/config";
 import express from "express";
-import { db } from "./configs/db.config.js";
+import { db } from "./configs/db.js";
 const app = express();
 
 import todoRoutes from "./routes/todoRoutes.js";
