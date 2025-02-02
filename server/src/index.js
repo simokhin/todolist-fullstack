@@ -11,9 +11,9 @@ app.use(express.json());
 
 //logger
 const requestLogger = (req, res, next) => {
-  console.log("Method:", req.method);
-  console.log("Path:", req.path);
-  console.log("Body:", req.body);
+  console.log("Метод:", req.method);
+  console.log("Путь:", req.path);
+  console.log("Тело запроса:", req.body);
   console.log("---");
   next();
 };
@@ -21,7 +21,7 @@ const requestLogger = (req, res, next) => {
 app.use(requestLogger);
 
 const unknownEndpoint = (req, res) => {
-  res.status(404).send({ error: "Unknown endpoint" });
+  res.status(404).send({ error: "Неизвестный адрес" });
 };
 
 app.use(unknownEndpoint);
@@ -33,7 +33,7 @@ app.use("/auth", authRoutes);
 const PORT = process.env.PORT || 3000;
 db.then(() => {
   app.listen(PORT, () => {
-    console.log(`Сервер запщуен: http://localhost:${PORT}`);
+    console.log(`Сервер запущен: http://localhost:${PORT}`);
   });
 }).catch((error) => {
   console.error("Не удалось подключиться к базе данных", error);
